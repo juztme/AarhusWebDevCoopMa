@@ -1,0 +1,15 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ProjectItem>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "master.cshtml";
+}
+
+<p>@Umbraco.Field("mainContent")</p>
+<h2>@Umbraco.Field("projectTitle")</h2>
+	<!--code found at https://our.umbraco.org/documentation/getting-started/backoffice/property-editors/built-in-property-editors/radiobutton-list-->
+	@if (Model.Content.HasValue("projectStatus"))
+		{
+			var preValue = Umbraco.GetPreValueAsString(Model.Content.GetPropertyValue<int>("projectStatus"));
+			<p><b>Project Status:</b> @preValue</p>
+		}
+<p><b>Description</b> @Umbraco.Field("projectDescription")</p>

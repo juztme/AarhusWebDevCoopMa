@@ -1,0 +1,23 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+	
+<div>
+	<h1>Our last 5 completed projects</h1>
+	<ul>
+	  @{
+		  IQueryable lastFiveCompletedProjects = 
+			  Model.Content.AncestorOrSelf(1)
+			  .Children
+			  .Where(x => x.DocumentTypeAlias == "projectsMain")
+			  .First()
+			  .Children
+			  .Where("projectStatus.Contains(\'9\')")
+			  .Where("Visible")
+			  .Take(5)
+			  .OrderBy("CreateDate desc");
+		  }
+
+		  @foreach(IPublishedContent project in lastFiveCompletedProjects){
+			  <li><a href="@project.Url">@project.Name</a></li>
+		  }
+	</ul>
+</div>

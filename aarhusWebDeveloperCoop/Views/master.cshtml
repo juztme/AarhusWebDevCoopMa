@@ -1,0 +1,69 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Master>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = null;
+}
+
+<html>
+	<head>
+		<title>@Umbraco.Field("siteTitle")</title>
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+        <link href="~/Content/myStyle.css" rel="stylesheet" />
+	</head>
+	<body>
+		<header class="navbar navbar-default">
+			<nav class="container" role="navigation">
+				<div class="navbar-header">
+				@{IPublishedContent root = Model.Content.AncestorOrSelf(1); }
+				<ul class="nav navbar-nav list-unstyled list-inline">
+					<li><img src="../../media/1005/tree-logo-xtra-small.png" alt="our logo"/></li>
+					<li class='@((Model.Content.Name == root.Name) ? "active" : null)'>
+						<a href="/">Home</a>
+					</li>
+					@foreach(IPublishedContent menuItem in root.Children.Where(x => x.IsVisible())){
+						<li class='@((menuItem.Name == Model.Content.Name) ? "active" : null)'>
+							<a href="@menuItem.Url">@menuItem.Name</a>
+						</li>
+					}
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href='@Model.Content.AncestorOrSelf(1).Children.Where(x => x.DocumentTypeAlias == "projectsMain")'>Our Projects<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+						@{
+							IQueryable projectsDropdown = 
+								Model.Content.AncestorOrSelf(1)
+								.Children
+								.Where(x => x.DocumentTypeAlias == "projectsMain")
+								.First()
+								.Children
+								.Where("Visible")
+								.OrderBy("Name");
+							
+							}
+							
+							@foreach(IPublishedContent project in projectsDropdown){
+								var prevalue = project.GetPropertyValue<int>("projectStatus");
+								if(Umbraco.GetPreValueAsString(prevalue) == "Completed"){
+									<li><a href="@project.Url">@project.Name</a></li>
+								}
+							}
+						</ul>
+					</li>
+				</ul>
+					
+				</div>
+			</nav>
+		</header>
+
+		<div class="">@RenderBody()
+			
+		<footer class="footer well">
+			<div class="container">
+				@Umbraco.Field("footer", recursive: true)
+			</div>
+		</footer>
+
+        <script src="~/Scripts/jquery-2.2.0.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+	</body>
+</html>

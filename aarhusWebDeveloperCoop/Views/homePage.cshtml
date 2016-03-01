@@ -1,0 +1,9 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.HomePage>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "master.cshtml";
+}
+
+<p>@Umbraco.Field("mainContent")</p>
+<!--take the last 5 completed projects and put them in a div on the homepage-->
+@Umbraco.RenderMacro("lastFiveCompletedProjects")
