@@ -10,14 +10,16 @@
 			  .Where(x => x.DocumentTypeAlias == "projectsMain")
 			  .First()
 			  .Children
-			  .Where("projectStatus.Contains(\'9\')")
 			  .Where("Visible")
-			  .Take(5)
-			  .OrderBy("CreateDate desc");
+			  .OrderBy("CreateDate desc")
+			  .Take(5);
 		  }
 
 		  @foreach(IPublishedContent project in lastFiveCompletedProjects){
-			  <li><a href="@project.Url">@project.Name</a></li>
+			  var prevalue = project.GetPropertyValue<int>("projectStatus");
+			  if(Umbraco.GetPreValueAsString(prevalue) == "Completed"){
+			  	<li><a href="@project.Url">@project.Name</a></li>
+			  }
 		  }
 	</ul>
 </div>
