@@ -11,8 +11,15 @@ namespace aarhusWebDeveloperCoop.ViewModels
     {
         [Required]
         public string Name { get; set; }
+
+        [Required]
+        [EmailAddress(ErrorMessage = "Please write a valid email address.")]
         public string Email { get; set; }
+
+        [Required]
         public string Subject { get; set; }
+
+        [Required]
         public string Message { get; set; }
     }
 }

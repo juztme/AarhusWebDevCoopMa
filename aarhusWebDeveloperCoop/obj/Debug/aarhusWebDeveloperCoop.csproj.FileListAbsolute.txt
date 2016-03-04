@@ -115,3 +115,4 @@ c:\users\juztm_000\documents\visual studio 2015\Projects\aarhusWebDeveloperCoop\
 c:\users\juztm_000\documents\visual studio 2015\Projects\aarhusWebDeveloperCoop\aarhusWebDeveloperCoop\bin\UmbracoExamine.xml
 c:\users\juztm_000\documents\visual studio 2015\Projects\aarhusWebDeveloperCoop\aarhusWebDeveloperCoop\obj\Debug\aarhusWebDeveloperCoop.dll
 c:\users\juztm_000\documents\visual studio 2015\Projects\aarhusWebDeveloperCoop\aarhusWebDeveloperCoop\obj\Debug\aarhusWebDeveloperCoop.pdb
+C:\Users\juztm_000\documents\visual studio 2015\Projects\aarhusWebDeveloperCoop\aarhusWebDeveloperCoop\obj\Debug\aarhusWebDeveloperCoop.csprojResolveAssemblyReference.cache

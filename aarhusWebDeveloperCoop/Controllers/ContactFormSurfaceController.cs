@@ -19,6 +19,9 @@ namespace aarhusWebDeveloperCoop.Controllers
 
         [HttpPost]
         public ActionResult HandleFormSubmit(ContactForm model) {
+
+            if (!ModelState.IsValid) { return CurrentUmbracoPage(); }
+
             //create a MailMessage object. it uses the System.Net.Mail namespace
             MailMessage message = new MailMessage();
 
@@ -43,6 +46,8 @@ namespace aarhusWebDeveloperCoop.Controllers
                 //send mail
                 smtp.Send(message);
             }
+
+            TempData["success"] = true;
 
             return RedirectToCurrentUmbracoPage();
         }
