@@ -118,14 +118,6 @@
             Returns the currently logged in Umbraco User
             </summary>
         </member>
-        <member name="T:Umbraco.Web.IHttpContextAccessor">
-            <summary>
-            Used to retrieve the HttpContext
-            </summary>
-            <remarks>
-            NOTE: This has a singleton lifespan
-            </remarks>
-        </member>
         <member name="T:Umbraco.Web.Editors.EditorModelEventManager">
             <summary>
             Used to emit events for editor models in the back office
@@ -509,22 +501,6 @@
             <para>The alias is case-insensitive.</para>
             </remarks>
         </member>
-        <member name="M:Umbraco.Web.Mvc.ControllerContextExtensions.GetUmbracoContext(System.Web.Mvc.ControllerContext)">
-            <summary>
-            Tries to get the Umbraco context from the whole ControllerContext hierarchy based on data tokens and if that fails
-            it will attempt to fallback to retrieving it from the HttpContext.
-            </summary>
-            <param name="controllerContext"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Umbraco.Web.Mvc.ControllerContextExtensions.GetDataTokenInViewContextHierarchy(System.Web.Mvc.ControllerContext,System.String)">
-            <summary>
-            Find a data token in the whole ControllerContext hierarchy of execution
-            </summary>
-            <param name="controllerContext"></param>
-            <param name="dataTokenName"></param>
-            <returns></returns>
-        </member>
         <member name="T:Umbraco.Web.Mvc.IRenderController">
             <summary>
             A marker interface to designate that a controller will be used for Umbraco front-end requests and/or route hijacking
@@ -580,16 +556,6 @@
             <summary>
             Stores the instance of EventMessages in the current request so all events will share the same instance
             </summary>
-        </member>
-        <member name="M:Umbraco.Web.RouteDataExtensions.GetUmbracoContext(System.Web.Routing.RouteData)">
-            <summary>
-            Tries to get the Umbraco context from the DataTokens
-            </summary>
-            <param name="routeData"></param>
-            <returns></returns>
-            <remarks>
-            This is useful when working on async threads since the UmbracoContext is not copied over explicitly
-            </remarks>
         </member>
         <member name="T:Umbraco.Web.Scheduling.ILatchedBackgroundTask">
             <summary>
@@ -989,10 +955,7 @@
         <member name="T:Umbraco.Web.IUmbracoContextAccessor">
             <summary>
             Used to retrieve the Umbraco context
-            </summary>
-            <remarks>
-            NOTE: This has a singleton lifespan
-            </remarks>    
+            </summary>    
         </member>
         <member name="P:Umbraco.Web.Models.ContentEditing.Relation.ParentId">
             <summary>
@@ -11977,26 +11940,6 @@
             Provides extension methods for <see cref="T:Umbraco.Web.UmbracoContext"/>.
             </summary>
         </member>
-        <member name="M:Umbraco.Web.UmbracoContextExtensions.GetUmbracoContext(System.Web.HttpContext)">
-            <summary>
-            tries to get the Umbraco context from the HttpContext
-            </summary>
-            <param name="http"></param>
-            <returns></returns>
-            <remarks>
-            This is useful when working on async threads since the UmbracoContext is not copied over explicitly
-            </remarks>
-        </member>
-        <member name="M:Umbraco.Web.UmbracoContextExtensions.GetUmbracoContext(System.Web.HttpContextBase)">
-            <summary>
-            tries to get the Umbraco context from the HttpContext
-            </summary>
-            <param name="http"></param>
-            <returns></returns>
-            <remarks>
-            This is useful when working on async threads since the UmbracoContext is not copied over explicitly
-            </remarks>
-        </member>
         <member name="M:Umbraco.Web.UmbracoContextExtensions.GetCurrentEventMessages(Umbraco.Web.UmbracoContext)">
             <summary>
             If there are event messages in the current request this will return them , otherwise it will return null
@@ -15405,11 +15348,6 @@
             Reloads the content in the content frame if the specified URL is currently loaded
             </summary>
             <param name="url"></param>
-        </member>
-        <member name="M:Umbraco.Web.UI.Pages.ClientTools.ReloadLocation">
-            <summary>
-            Reloads location, refreshing what is in the content frame
-            </summary>
         </member>
         <member name="M:Umbraco.Web.UI.Pages.ClientTools.ShowDashboard(System.String)">
             <summary>
