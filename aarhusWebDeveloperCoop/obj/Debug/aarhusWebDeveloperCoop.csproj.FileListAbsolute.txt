@@ -113,6 +113,5 @@ c:\users\juztm_000\documents\visual studio 2015\Projects\aarhusWebDeveloperCoop\
 c:\users\juztm_000\documents\visual studio 2015\Projects\aarhusWebDeveloperCoop\aarhusWebDeveloperCoop\bin\umbraco.providers.xml
 c:\users\juztm_000\documents\visual studio 2015\Projects\aarhusWebDeveloperCoop\aarhusWebDeveloperCoop\bin\Umbraco.Web.UI.xml
 c:\users\juztm_000\documents\visual studio 2015\Projects\aarhusWebDeveloperCoop\aarhusWebDeveloperCoop\bin\UmbracoExamine.xml
-c:\users\juztm_000\documents\visual studio 2015\Projects\aarhusWebDeveloperCoop\aarhusWebDeveloperCoop\obj\Debug\aarhusWebDeveloperCoop.csprojResolveAssemblyReference.cache
 c:\users\juztm_000\documents\visual studio 2015\Projects\aarhusWebDeveloperCoop\aarhusWebDeveloperCoop\obj\Debug\aarhusWebDeveloperCoop.dll
 c:\users\juztm_000\documents\visual studio 2015\Projects\aarhusWebDeveloperCoop\aarhusWebDeveloperCoop\obj\Debug\aarhusWebDeveloperCoop.pdb
