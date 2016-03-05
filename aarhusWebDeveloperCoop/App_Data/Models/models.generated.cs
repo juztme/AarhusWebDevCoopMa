@@ -453,6 +453,68 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 	}
 
+	/// <summary>User Message</summary>
+	[PublishedContentModel("userMessage")]
+	public partial class UserMessage : PublishedContentModel
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "userMessage";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public UserMessage(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<UserMessage, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Email
+		///</summary>
+		[ImplementPropertyType("email")]
+		public string Email
+		{
+			get { return this.GetPropertyValue<string>("email"); }
+		}
+
+		///<summary>
+		/// Message
+		///</summary>
+		[ImplementPropertyType("message")]
+		public string Message
+		{
+			get { return this.GetPropertyValue<string>("message"); }
+		}
+
+		///<summary>
+		/// Subject
+		///</summary>
+		[ImplementPropertyType("subject")]
+		public string Subject
+		{
+			get { return this.GetPropertyValue<string>("subject"); }
+		}
+
+		///<summary>
+		/// Your Name
+		///</summary>
+		[ImplementPropertyType("yourName")]
+		public string YourName
+		{
+			get { return this.GetPropertyValue<string>("yourName"); }
+		}
+	}
+
 	/// <summary>Folder</summary>
 	[PublishedContentModel("Folder")]
 	public partial class Folder : PublishedContentModel
