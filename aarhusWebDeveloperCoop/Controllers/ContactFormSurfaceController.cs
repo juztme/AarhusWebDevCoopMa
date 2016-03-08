@@ -65,7 +65,7 @@ namespace aarhusWebDeveloperCoop.Controllers
             //save
             Services.ContentService.Save(comment);
 
-            //save and publish; if you uncomment it, it's going to publish it, but if you go to the published message page, it's going to show you a blank page
+            //save and publish; if you uncomment it, it's going to publish it, but if you go to the published message page in the browser, it's going to show you a blank page
             //Services.ContentService.SaveAndPublishWithStatus(comment);
 
             return RedirectToCurrentUmbracoPage();
