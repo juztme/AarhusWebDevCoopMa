@@ -2,6 +2,7 @@
 
 @* OrderBy() takes the property to sort by and optionally order desc/asc *@
 
+
 @foreach (var page in CurrentPage.Children.Where("Visible").OrderBy("CreateDate desc"))
 { 
     <div class="article">
