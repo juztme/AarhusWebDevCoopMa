@@ -12,7 +12,8 @@
         <link href="~/Content/myStyle.css" rel="stylesheet" />
 	</head>
 	<body>
-		<header class="navbar navbar-default">
+		<div class="container" id="wrapper">
+			<header class="navbar navbar-default">
 			<nav class="container" role="navigation">
 				<div class="navbar-header">
 				@{IPublishedContent root = Model.Content.AncestorOrSelf(1); }
@@ -21,12 +22,8 @@
 					<li class='@((Model.Content.Name == root.Name) ? "active" : null)'>
 						<a href="/">Home</a>
 					</li>
-					@foreach(IPublishedContent menuItem in root.Children.Where(x => x.IsVisible())){
-						<li class='@((menuItem.Name == Model.Content.Name) ? "active" : null)'>
-							<a href="@menuItem.Url">@menuItem.Name</a>
-						</li>
-					}
-					<li class="dropdown">
+						
+						<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href='@Model.Content.AncestorOrSelf(1).Children.Where(x => x.DocumentTypeAlias == "projectsMain")'>Our Projects<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 						@{
@@ -49,6 +46,19 @@
 							}
 						</ul>
 					</li>
+					@foreach(IPublishedContent menuItem in root.Children.Where(x => x.IsVisible())){
+						if(Members.GetCurrentLoginStatus().IsLoggedIn && @menuItem.Name == "Login"){
+							<li class='@((menuItem.Name == Model.Content.Name) ? "active" : null)'>
+								<a href="@menuItem.Url">Logout</a>
+							</li>
+								} else {
+						<li class='@((menuItem.Name == Model.Content.Name) ? "active" : null)'>
+							<a href="@menuItem.Url">@menuItem.Name</a>
+						</li>
+						}
+						
+					}
+					
 				</ul>
 					
 				</div>
@@ -57,11 +67,13 @@
 
 		<div class="">@RenderBody()
 			
-		<footer class="footer well">
-			<div class="container">
-				@Umbraco.Field("footer", recursive: true)
-			</div>
-		</footer>
+			<footer class="footer well">
+				<div class="container">
+					@Umbraco.Field("footer", recursive: true)
+				</div>
+			</footer>
+		</div>
+		
 
         <script src="~/Scripts/jquery-2.2.0.min.js"></script>
         <script src="~/Scripts/bootstrap.min.js"></script>

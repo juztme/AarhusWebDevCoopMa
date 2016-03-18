@@ -1,8 +1,5 @@
 ﻿@model aarhusWebDeveloperCoop.ViewModels.ContactForm
 
-	
-
-
 @if (TempData["success"] == null) {
     using (Html.BeginUmbracoForm("HandleFormSubmit", "ContactFormSurface", new object { }, new { @class = "form-horizontal" }))
     {
