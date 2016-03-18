@@ -46,19 +46,20 @@
 							}
 						</ul>
 					</li>
+							
 					@foreach(IPublishedContent menuItem in root.Children.Where(x => x.IsVisible())){
 						if(Members.GetCurrentLoginStatus().IsLoggedIn && @menuItem.Name == "Login"){
 							<li class='@((menuItem.Name == Model.Content.Name) ? "active" : null)'>
 								<a href="@menuItem.Url">Logout</a>
 							</li>
-								} else {
-						<li class='@((menuItem.Name == Model.Content.Name) ? "active" : null)'>
-							<a href="@menuItem.Url">@menuItem.Name</a>
-						</li>
-						}
+								} else if (!Members.GetCurrentLoginStatus().IsLoggedIn && @menuItem.Name == "Projects"){
 						
+						} else {					
+							<li class='@((menuItem.Name == Model.Content.Name) ? "active" : null)'>
+								<a href="@menuItem.Url">@menuItem.Name</a>
+							</li>
+						}
 					}
-					
 				</ul>
 					
 				</div>

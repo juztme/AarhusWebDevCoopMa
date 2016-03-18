@@ -63,7 +63,7 @@
 		var logoutModel = new PostRedirectModel();
 		logoutModel.RedirectUrl = "/";
 		using (Html.BeginUmbracoForm<UmbLoginStatusController>("HandleLogout")){
-			<button>Logout</button>
+			<button class="btn btn-primary input-medium pullleft">Logout</button>
 			@Html.HiddenFor(m => logoutModel.RedirectUrl)
 		}
 	}
