@@ -1,0 +1,15 @@
+﻿.navbar .navbar-nav {
+    float: none;
+}
+
+.navbar .navbar-collapse {
+    text-align: center;
+}
+
+.footer{
+    text-align:center;
+}
+
+#mailbox {
+    margin-bottom:40px;
+}

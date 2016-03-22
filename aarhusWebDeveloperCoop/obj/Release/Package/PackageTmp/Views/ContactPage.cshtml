@@ -1,0 +1,21 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ContactPage>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "master.cshtml";
+}
+
+<h1>@CurrentPage.Name</h1>
+	
+<p>Do you have any questions about anything that you have not found the response to on the website?</p>
+<p>Do you want to request a feature?</p>
+<p>Do you have a great idea that you wish to propose to us, or have just encountered a problem and you cannot get rid of it?</p>
+<p>This is the place to do it!</p>
+<div>
+	@Html.Action("Index","ContactFormSurface")	
+</div>
+	
+<div class="row" id="mailbox">
+	<div class="col-lg-3"></div>
+	<img class="col-lg-6" src="../../../media/1014/mail_vector_icon_light_blue.png" alt="mail photo"/> 
+	<div class="col-lg-3"></div>
+</div>

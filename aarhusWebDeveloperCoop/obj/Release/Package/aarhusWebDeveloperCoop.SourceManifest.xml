@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <DbDacFx path="C:\Users\juztm_000\documents\visual studio 2015\Projects\aarhusWebDeveloperCoop\aarhusWebDeveloperCoop\obj\Release\AutoScripts\umbracoDbDSN_IncrementalSchemaOnly.dacpac" dacpacAction="Deploy" />
+  <IisApp path="C:\Users\juztm_000\documents\visual studio 2015\Projects\aarhusWebDeveloperCoop\aarhusWebDeveloperCoop\obj\Release\Package\PackageTmp" />
+  <setAcl path="C:\Users\juztm_000\documents\visual studio 2015\Projects\aarhusWebDeveloperCoop\aarhusWebDeveloperCoop\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\Users\juztm_000\documents\visual studio 2015\Projects\aarhusWebDeveloperCoop\aarhusWebDeveloperCoop\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>

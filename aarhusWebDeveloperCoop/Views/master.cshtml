@@ -7,10 +7,11 @@
 <html>
 	<head>
 		<title>@Umbraco.Field("siteTitle")</title>
-        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-        <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <!--<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />-->
         <link href="~/Content/myStyle.css" rel="stylesheet" />
-	</head>
+	<meta name="description" content="The description of my page" />
+</head>
 	<body>
 		<div class="container" id="wrapper">
 			<header class="navbar navbar-default">
@@ -69,7 +70,7 @@
 		<div class="">@RenderBody()
 			
 			<footer class="footer well">
-				<div class="container">
+				<div class="container" id="footer-text">
 					@Umbraco.Field("footer", recursive: true)
 				</div>
 			</footer>

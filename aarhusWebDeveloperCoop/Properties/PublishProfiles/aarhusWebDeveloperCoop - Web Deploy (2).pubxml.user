@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAyeorAdl7OUC0NSHVyPf2JAAAAAACAAAAAAAQZgAAAAEAACAAAAC+Eh0i20cj81zrHiHcO3YlEpqg3vCvKe4RLERWMsP7yQAAAAAOgAAAAAIAACAAAADzIlLSSLnltTWeYizyftUFBf7S0e7kpk3t2GP5k36jsSAAAACh49hzsiKA8L7lkpB9sx9EdgrHz5pO1tnbD6rkLpQoDEAAAAA8V5KZdvM4W05gwTaI2Eor5fQ22LWYOdZgoHjpykDFJYtV1wuBegTmvyK0tl/qHSQ56RZgOGTHBP8/pLlpFdgH</EncryptedPassword>
+    <_PublishTargetUrl>ftp://marina.database.windows.net/ftp://marina.database.windows.net</_PublishTargetUrl>
+  </PropertyGroup>
+</Project>
