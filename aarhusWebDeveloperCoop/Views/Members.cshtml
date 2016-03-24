@@ -5,31 +5,46 @@
 @using Umbraco.Core.Services;
 @using Newtonsoft.Json;
 @using Umbraco.Web.Models;
-
 @{
-	Layout = "master.cshtml";
+  Layout = "master.cshtml";
 
-<h1>Active Members</h1>
-var memberService = ApplicationContext.Current.Services.MemberService;
-var members = memberService.GetMembersByMemberType("active");
+  <h1>Active Members</h1>
+  var memberService = ApplicationContext.Current.Services.MemberService;
+  var members = memberService.GetMembersByMemberType("active");
+  var prospects = memberService.GetMembersByMemberType("prospect");
 
-foreach (var member in members) {
-	
-	if(member.GetValue("photo") != null){
-		string image = member.GetValue<string>("photo");
-		ImageCropDataSet imageCrops = JsonConvert.DeserializeObject<ImageCropDataSet>(image);
-		string imagePath = imageCrops.Src.GetCropUrl();
-		<img src="@imagePath" /><br/>
-	}
-	
-	<p>
-		<b>Name: </b> @member.GetValue("firstname") @member.GetValue("lastname") <br/>
-		<b>Address: </b> @member.GetValue("address"), @member.GetValue("zip"), @member.GetValue("city") <br/>
-		<b>Email: </b> @member.Email<br/>
+  foreach (var member in members)
+  {
 
-	</p>
-	String[] skills = member.GetValue("skills").ToString().Split(',');
-	string skillString = string.Join(", ", from skill in skills select umbraco.library.GetPreValueAsString(Convert.ToInt32(skill)));
-	<b>Skills: </b> <span>@skillString</span> <br/>
-	}
+    if (member.GetValue("photo") != null)
+    {
+      string image = member.GetValue<string>("photo");
+      ImageCropDataSet imageCrops = JsonConvert.DeserializeObject<ImageCropDataSet>(image);
+      string imagePath = imageCrops.Src.GetCropUrl();
+      <img src="@imagePath" /><br />}
+
+
+
+    <p>
+      <b>Name: </b> @member.GetValue("firstname") @member.GetValue("lastname") <br />
+      <b>Address: </b> @member.GetValue("address"), @member.GetValue("zip"), @member.GetValue("city") <br />
+      <b>Email: </b> @member.Email<br />
+    </p>
+
+    String[] skills = member.GetValue("skills").ToString().Split(',');
+    string skillString = string.Join(", ", from skill in skills select umbraco.library.GetPreValueAsString(Convert.ToInt32(skill)));
+    <b>Skills: </b> <span>@skillString</span> <br /><br />
+  }
+
+
+
+  <h1>Prospect Members</h1>
+  foreach (var prospect in prospects)
+  {
+    <p>
+      <b>Name: </b> @prospect.GetValue("firstname") @prospect.GetValue("lastname") <br />
+      <b>Address: </b> @prospect.GetValue("mobile")
+    </p>
+  }
+
 }

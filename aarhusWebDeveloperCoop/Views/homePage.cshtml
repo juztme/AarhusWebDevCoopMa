@@ -1,36 +1,40 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.HomePage>
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
-	Layout = "master.cshtml";
+  Layout = "master.cshtml";
 }
-
 <p>@Umbraco.Field("mainContent")</p>
 <!--take the last 5 completed projects and put them in a div on the homepage-->
 <div class="row">
-	<div class="col-md-3"></div>
-	<div class="col-md-6">
-		@Umbraco.RenderMacro("lastFiveCompletedProjects")
-	</div>
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    @Umbraco.RenderMacro("lastFiveCompletedProjects")
+  </div>
 </div>
-
 <div class="row">
-	<div class="col-md-4">
-		<h2>Our Company</h2>
-		<p>We're a team of developers who wish for other developers in Aarhus to be more productive.
+  <div class="col-md-4">
+    <h2>Our Company</h2>
+    <p>
+      We're a team of developers who wish for other developers in Aarhus to be more productive.
 
-We've noticed that developers in North America are taking all the credit for developing stuff while the rest of the world is considered silent. We want to change that.</p>
-	</div>	
-	<div class="col-md-4">
-		<h2>What Do We Do?</h2>
-		<p>We're providing you with the opportunity to find projects that interest you and get involved!
+      We've noticed that developers in North America are taking all the credit for developing stuff while the rest of the world is considered silent. We want to change that.
+    </p>
+  </div>
+  <div class="col-md-4">
+    <h2>What Do We Do?</h2>
+    <p>
+      We're providing you with the opportunity to find projects that interest you and get involved!
 
-Feel free to browse through our projects, be they already in development, or just at the stage where people are still brainstorming the idea.</p>
-	</div>	
-		
-	<div class="col-md-4">
-		<h2>What Do You Get?</h2>
-		<p>The best part is that you get to collaborate with other students to do awesome stuff.
+      Feel free to browse through our projects, be they already in development, or just at the stage where people are still brainstorming the idea.
+    </p>
+  </div>
 
-Be they mobile apps or websites, you can just join the fun in developing them. You just have to want to show up and communicate with everybody so that everything is going to go smoothly!</p>
-	</div>
+  <div class="col-md-4">
+    <h2>What Do You Get?</h2>
+    <p>
+      The best part is that you get to collaborate with other students to do awesome stuff.
+
+      Be they mobile apps or websites, you can just join the fun in developing them. You just have to want to show up and communicate with everybody so that everything is going to go smoothly!
+    </p>
+  </div>
 </div>

@@ -1,85 +1,92 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Master>
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
-	Layout = null;
+  Layout = null;
 }
-
 <html>
-	<head>
-		<title>@Umbraco.Field("siteTitle")</title>
-        <link href="~/Content/bootstrap.css" rel="stylesheet" />
-        <!--<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />-->
-        <link href="~/Content/myStyle.css" rel="stylesheet" />
-	<meta name="description" content="The description of my page" />
+<head>
+  <title>@Umbraco.Field("siteTitle")</title>
+  <link href="~/Content/bootstrap.css" rel="stylesheet" />
+  <!--<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />-->
+  <link href="~/Content/myStyle.css" rel="stylesheet" />
+  <meta name="description" content="The description of my page" />
 </head>
-	<body>
-		<div class="container" id="wrapper">
-			<header class="navbar navbar-default">
-			<nav class="container" role="navigation">
-				<div class="navbar-header">
-				@{IPublishedContent root = Model.Content.AncestorOrSelf(1); }
-				<ul class="nav navbar-nav list-unstyled list-inline">
-					<li><img src="../../media/1005/tree-logo-xtra-small.png" alt="our logo"/></li>
-					<li class='@((Model.Content.Name == root.Name) ? "active" : null)'>
-						<a href="/">Home</a>
-					</li>
-						
-						<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href='@Model.Content.AncestorOrSelf(1).Children.Where(x => x.DocumentTypeAlias == "projectsMain")'>Our Projects<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-						@{
-							IQueryable projectsDropdown = 
-								Model.Content.AncestorOrSelf(1)
-								.Children
-								.Where(x => x.DocumentTypeAlias == "projectsMain")
-								.First()
-								.Children
-								.Where("Visible")
-								.OrderBy("Name");
-							
-							}
-							
-							@foreach(IPublishedContent project in projectsDropdown){
-								var prevalue = project.GetPropertyValue<int>("projectStatus");
-								if(Umbraco.GetPreValueAsString(prevalue) == "Completed"){
-									<li><a href="@project.Url">@project.Name</a></li>
-								}
-							}
-						</ul>
-					</li>
-							
-					@foreach(IPublishedContent menuItem in root.Children.Where(x => x.IsVisible())){
-						if(Members.GetCurrentLoginStatus().IsLoggedIn && @menuItem.Name == "Login"){
-							<li class='@((menuItem.Name == Model.Content.Name) ? "active" : null)'>
-								<a href="@menuItem.Url">Logout</a>
-							</li>
-								} else if (!Members.GetCurrentLoginStatus().IsLoggedIn && @menuItem.Name == "Projects"){
-						
-						} else {					
-							<li class='@((menuItem.Name == Model.Content.Name) ? "active" : null)'>
-								<a href="@menuItem.Url">@menuItem.Name</a>
-							</li>
-						}
-					}
-				</ul>
-					
-				</div>
-			</nav>
-		</header>
+<body>
+  <div class="container" id="wrapper">
+    <header class="navbar navbar-default">
+      <nav class="container" role="navigation">
+        <div class="navbar-header">
+          @{IPublishedContent root = Model.Content.AncestorOrSelf(1); }
+          <ul class="nav navbar-nav list-unstyled list-inline">
+            <li><img src="../../media/1005/tree-logo-xtra-small.png" alt="our logo" /></li>
+            <li class='@((Model.Content.Name == root.Name) ? "active" : null)'>
+              <a href="/">Home</a>
+            </li>
 
-		<div class="">@RenderBody()
-			
-			<footer class="footer well">
-				<div class="container" id="footer-text">
-					@Umbraco.Field("footer", recursive: true)
-				</div>
-			</footer>
-		</div>
-		
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href='@Model.Content.AncestorOrSelf(1).Children.Where(x => x.DocumentTypeAlias == "projectsMain")'>Our Projects<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                @{
+                  IQueryable projectsDropdown =
+                                  Model.Content.AncestorOrSelf(1)
+                                  .Children
+                                  .Where(x => x.DocumentTypeAlias == "projectsMain")
+                                  .First()
+                                  .Children
+                                  .Where("Visible")
+                                  .OrderBy("Name");
 
-        <script src="~/Scripts/jquery-2.2.0.min.js"></script>
-        <script src="~/Scripts/bootstrap.min.js"></script>
-        <script src="~/Scripts/jquery.validate.min.js"></script>
-        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-	</body>
+
+
+                }
+
+                @foreach (IPublishedContent project in projectsDropdown)
+                {
+                  var prevalue = project.GetPropertyValue<int>("projectStatus");
+                  if (Umbraco.GetPreValueAsString(prevalue) == "Completed")
+                  {
+                    <li><a href="@project.Url">@project.Name</a></li>
+                  }
+                }
+              </ul>
+            </li>
+
+            @foreach (IPublishedContent menuItem in root.Children.Where(x => x.IsVisible()))
+            {
+              if (Members.GetCurrentLoginStatus().IsLoggedIn && @menuItem.Name == "Login")
+              {
+                <li class='@((menuItem.Name == Model.Content.Name) ? "active" : null)'>
+                  <a href="@menuItem.Url">Logout</a>
+                </li>
+              }
+              else if (!Members.GetCurrentLoginStatus().IsLoggedIn && @menuItem.Name == "Projects")
+              {
+
+              }
+              else {
+                <li class='@((menuItem.Name == Model.Content.Name) ? "active" : null)'>
+                  <a href="@menuItem.Url">@menuItem.Name</a>
+                </li>
+              }
+            }
+          </ul>
+
+        </div>
+      </nav>
+    </header>
+    <div class="">
+      @RenderBody()
+
+      <footer class="footer well">
+        <div class="container" id="footer-text">
+          @Umbraco.Field("footer", recursive: true)
+        </div>
+      </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-2.2.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
 </html>
