@@ -1,15 +1,13 @@
 ﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
-
 @{var root = CurrentPage.AncestorOrSelf(1); }
-
 <ul class="nav navbar-nav">
-	<li class="@(CurrentPage.Name = root.Name ? 'active' : null)">
-		<a href = "/">@root.Name</a>
-	</li>
-	@foreach(var menuItem in root.ChildrenWhere("Visible")){
-		<li class="@(menuItem.IsAncestorOrSelf(CurrentPage) ? 'active' : null)">
-			<a href="@menuItem.Url">@menuItem.Name</a>
-		</li>
-	} 
+  <li class="@(CurrentPage.Name = root.Name ? 'active' : null)">
+    <a href="/">@root.Name</a>
+  </li>
+  @foreach (var menuItem in root.ChildrenWhere("Visible"))
+  {
+    <li class="@(menuItem.IsAncestorOrSelf(CurrentPage) ? 'active' : null)">
+      <a href="@menuItem.Url">@menuItem.Name</a>
+    </li>
+  }
 </ul>
-		
